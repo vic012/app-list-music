@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<title>Play List de Músicas</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<img src="{% static 'img/partitura.png' %}" width="100px" height="50px">
+		<a class="navbar-brand" href="/">Minhas Músicas Favoritas</a>
+	</nav>
+	<table  class="table table-striped">
+		<thead>
+			<th>Nome</th>
+			<th>Autor</th>
+		</thead>
+		<tbody>
+			{% for item in musicas %}
+				<tr>
+					<!-- musicas aqui se refere ao name='musicas' na url -->
+					<td><a href="{% url 'musicas' item.id %}">{{ item.nome }}</a></td>
+					<td>{{ item.autor }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>
